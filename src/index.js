@@ -5,8 +5,17 @@
  * @see `codingChallenge.md` for instructions
  */
 export function titleCase (str) {
-  // CODE HERE
-  return false;
+  if (str === "")
+	  throw 'Input cannot be null';
+  
+  str = str.replace(/[^0-9a-z]/gi, ' ');
+  
+  str = str.toLowerCase().split(' ');
+  for (var i = 0; i < str.length; i++) {
+	  str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1);
+  }
+  
+  return str.join(' ').trim();
 }
 
 /**
@@ -15,7 +24,19 @@ export function titleCase (str) {
  * @see `codingChallenge.md` for instructions
  */
 export function dateString (timestamp) {
-  // CODE HERE
-  return false;
+  //if (typeof timestamp !== null && !timestamp) 
+	  //throw 'Input cannot be null';
+	
+  if (timestamp === undefined) {
+	timestamp = new Date().getTime();
+  }
+  
+  var date = new Date(timestamp);
+  var result = date.toLocaleString({},
+	  {timeZone:"UTC",month:"long", day:"2-digit", year:"numeric"});
+  
+  return result;
 }
+
+
 
